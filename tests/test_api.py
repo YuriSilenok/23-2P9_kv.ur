@@ -26,8 +26,8 @@ class TestsAPI(unittest.TestCase):
 
     def test_api_three_is_zero(self):
         """Прямая параллельна оси"""
-        HOST = 'localhost:8000'
-        URL = "/kvur/"
+        host = 'localhost:8000'
+        url = "/kvur/"
         client = testclient.TestClient(app=app)
 
         a_in = 0
@@ -36,7 +36,7 @@ class TestsAPI(unittest.TestCase):
         answer = "Нет решения"
         string = "Линейное уравнение параллельное оси Ох"
         output = client.get(
-            f"http://{HOST}{URL}?a={a_in}&b={b_in}&c={c_in}"
+            f"http://{host}{url}?a={a_in}&b={b_in}&c={c_in}"
             ).json()
         count = 2
 
