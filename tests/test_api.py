@@ -8,8 +8,8 @@ class TestsAPI(unittest.TestCase):
     def test_linear_equation(self):
         """Проверка API на квадратное уравнение"""
         a = 0
-        b = 2
-        c = -4
+        b = 3
+        c = 6
         x = 2
         string = "Уравнение линейное, один корень"
         count = 2
