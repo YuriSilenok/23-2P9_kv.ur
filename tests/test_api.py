@@ -14,7 +14,7 @@ class TestsAPI(unittest.TestCase):
         string = "Уравнение линейное, один корень"
         count = 2
         url = "http://127.0.0.1:8000/kvur"
-        result = requests.get(url+f"?a={a}&b={b}&c={c}", timeout = 1111).json()
+        result = requests.get(url+f"?a={a}&b={b}&c={c}", timeout=1111).json()
         self.assertEqual(len(result), count,
                          "incorrect count of values (linear equation)")
         self.assertEqual(result[0], string,
