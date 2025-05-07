@@ -1,7 +1,7 @@
 """api для решение уравнения"""
 from fastapi import FastAPI
-from main import kv_ur
 from fastapi.middleware.cors import CORSMiddleware
+from main import kv_ur
 app = FastAPI()
 
 app.add_middleware(
