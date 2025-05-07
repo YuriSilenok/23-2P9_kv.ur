@@ -5,6 +5,10 @@ from fastapi import testclient
 from api import app
 
 
+HOST = 'localhost:8000'
+URL = "/kvur/"
+client = testclient.TestClient(app=app)
+
 class TestsAPI(unittest.TestCase):
     """Проверка API на квадратное уравнение"""
     def test_linear_equation(self):
@@ -15,8 +19,8 @@ class TestsAPI(unittest.TestCase):
         x = 2
         string = "Уравнение линейное, один корень"
         count = 2
-        url = "http://127.0.0.1:8000/kvur"
-        result = requests.get(url+f"?a={a}&b={b}&c={c}", timeout=1111).json()
+        result = requests.get(f"http://{HOST}{URL}?a={a}&b={b}&c={c}",
+                              timeout=1111).json()
         self.assertEqual(len(result), count,
                          "incorrect count of values (linear equation)")
         self.assertEqual(result[0], string,
@@ -26,17 +30,13 @@ class TestsAPI(unittest.TestCase):
 
     def test_api_three_is_zero(self):
         """Прямая параллельна оси"""
-        host = 'localhost:8000'
-        url = "/kvur/"
-        client = testclient.TestClient(app=app)
-
         a_in = 0
         b_in = 0
         c_in = 4
         answer = "Нет решения"
         string = "Линейное уравнение параллельное оси Ох"
         output = client.get(
-            f"http://{host}{url}?a={a_in}&b={b_in}&c={c_in}"
+            f"http://{HOST}{URL}?a={a_in}&b={b_in}&c={c_in}"
             ).json()
         count = 2
 
