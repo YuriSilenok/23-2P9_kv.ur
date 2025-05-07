@@ -37,5 +37,5 @@ jobs:
     - name: Run unittests
       run: |
         echo "Running unittests..."
-        python -m unittest discover -s tests
+        python -m unittest discover -s tests -v
 
