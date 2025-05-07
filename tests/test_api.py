@@ -4,6 +4,7 @@ import requests
 from fastapi import testclient
 from api import app
 
+
 class TestsAPI(unittest.TestCase):
     """Проверка API на квадратное уравнение"""
     def test_linear_equation(self):
@@ -22,13 +23,13 @@ class TestsAPI(unittest.TestCase):
                          "incorrect string (linear equation)")
         self.assertEqual(result[1], x,
                          "incorrect x (linear equation)")
-        
+
     def test_api_three_is_zero(self):
         """Прямая параллельна оси"""
         HOST = 'localhost:8000'
         URL = "/kvur/"
         client = testclient.TestClient(app=app)
-        
+
         a_in = 0
         b_in = 0
         c_in = 4
