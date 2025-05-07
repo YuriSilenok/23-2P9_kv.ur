@@ -4,11 +4,26 @@
 
 <body>
     <p ALIGN="center">
-    <label> A </label><input placeholder="A"/><br>
-    <label> B </label><input placeholder="B"/><br>
-    <label> C </label><input placeholder="C"/><br>
-    <button> Кнопка </button><br>
+    <label> A </label><input id="inputA" placeholder="A"/><br>
+    <label> B </label><input id="inputB" placeholder="B"/><br>
+    <label> C </label><input id="inputC" placeholder="C"/><br>
+    <button id="solution_button"> Кнопка </button><br>
     <label> Вывод: </label><br>
-    <textarea></textarea>
+    <textarea id="textarea"></textarea>
     </p>
+    <script>
+        const solButton = document.getElementById('solution_button')
+        solButton.addEventListener('click', () => {
+            const area = document.getElementById('textarea')
+            const input_a = document.getElementById('inputA')
+            const input_b = document.getElementById('inputB')
+            const input_c = document.getElementById('inputC')
+            console.log(input_a.value)
+            responce = fetch(
+                `http://127.0.0.1:8000/kvur/?a=${input_a.value}&b=${input_b.value}&c=${input_c.value}`
+            )
+            .then( data => data.json() )
+            .then( data => area.innerText = data )
+        })
+    </script>
 </body>
