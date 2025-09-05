@@ -1,21 +1,35 @@
-"""Module for all unittests api"""
-
+"""Проверка API на квадратное уравнение"""
 import unittest
+import requests
 from fastapi import testclient
 from api import app
 
+
 HOST = 'localhost:8000'
 URL = "/kvur/"
-
 client = testclient.TestClient(app=app)
 
-
-class TestsKvUrAPI(unittest.TestCase):
-    """Class for unittests API"""
+class TestsAPI(unittest.TestCase):
+    """Проверка API на квадратное уравнение"""
+    def test_linear_equation(self):
+        """Проверка API на квадратное уравнение"""
+        a = 0
+        b = 3
+        c = 6
+        x = 2
+        string = "Уравнение линейное, один корень"
+        count = 2
+        result = requests.get(f"http://{HOST}{URL}?a={a}&b={b}&c={c}",
+                              timeout=1111).json()
+        self.assertEqual(len(result), count,
+                         "incorrect count of values (linear equation)")
+        self.assertEqual(result[0], string,
+                         "incorrect string (linear equation)")
+        self.assertEqual(result[1], x,
+                         "incorrect x (linear equation)")
 
     def test_api_three_is_zero(self):
         """Прямая параллельна оси"""
-
         a_in = 0
         b_in = 0
         c_in = 4
